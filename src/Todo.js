@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Button from './components/Button.js'
 
 const Todo = () =>{
     const [text, setText] = useState('');
@@ -14,13 +15,13 @@ const Todo = () =>{
                     setText(e.target.value) //updates the text store
                 }}
              />
-             <button onClick={ () => {
+             <Button onClick={ () => {
                     let a = [...list]
                     a.push(text); // adds to the List
                     setList(a); //updates the list store
                     }
 
-             }>Add</button>
+             }>Add</Button>
             <ul>
                 {list.map((item, index)=>(
                     <ListItem key={index} taskname={item} />

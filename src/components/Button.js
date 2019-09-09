@@ -1,17 +1,37 @@
 import React from 'react'
+import styled, { css } from 'styled-components'
 
-
-const Button = (props) =>{
-    let className;
+function isRegular(props){
     if(props.regular){
-        className = 'btn regular'
-    }else if(props.outline){
-        className = 'btn outline'
+        return css`
+        background-color:red;
+        color:#fff;`
     }
+}
+function isOutline(props){
+    if(props.outline){
+        return css`
+            color:red;
+            background-color:transparent;
+            border:solid 1px red;`
+    }
+}
+
+const ButtonStyle = styled.button`
+
+    padding:1rem 1.5rem ;
+    background-color:#ddd;
+    border-radius: 38px;
+    border:none;
+
+    ${isOutline}
+    ${isRegular}
+`
+const Button = (props) =>{
     return (
-        <button {...props} className={className}>
+        <ButtonStyle regular >
             {props.children}
-        </button>
+        </ButtonStyle>
     )
 }
 
