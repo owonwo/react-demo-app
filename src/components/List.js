@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import t from 'prop-types';
 import styled from 'styled-components';
 import Button from './Button';
+import CheckBox from './CheckBox';
 
 const ListStyle = styled.li`
     display: block;
@@ -18,7 +19,7 @@ const ListStyle = styled.li`
 export const ListItem = ({ task, onDelete, onChecked }) => {
     return (
         <ListStyle>
-            <input type="checkbox" checked={task.checked} onChange={onChecked} /> 
+        <CheckBox checked={task.checked} onChange={onChecked} />
             {!task.checked
                 ? <span>{task.name}</span>
                 :<strike>{task.name}</strike>
