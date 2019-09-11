@@ -4,35 +4,43 @@ import styled, { css } from 'styled-components'
 function isRegular(props){
     if(props.regular){
         return css`
-        background-color:red;
-        color:#fff;`
+            background-color: purple;
+            color:#fff;
+        `
     }
 }
+
 function isOutline(props){
     if(props.outline){
         return css`
-            color:red;
             background-color:transparent;
-            border:solid 1px red;`
+            color: #bbb;
+            border:solid 1px  #bbb;
+
+            &:focus {
+                color: purple;
+                border:solid 1px  purple;
+            }
+            `
+
     }
 }
 
-const ButtonStyle = styled.button`
+const isSmall = props => {
+    return props.small && css`
+        padding: .8rem 1.5rem;
+    `
+}
 
+const ButtonStyle = styled.button`
     padding:1rem 1.5rem ;
     background-color:#ddd;
     border-radius: 38px;
     border:none;
 
+    ${isSmall}
     ${isOutline}
     ${isRegular}
 `
-const Button = (props) =>{
-    return (
-        <ButtonStyle regular >
-            {props.children}
-        </ButtonStyle>
-    )
-}
 
-export default Button
+export default ButtonStyle
